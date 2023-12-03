@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    container_name: DANNYA-v1
+    restart: always
+    ports:
+      - "8069:80"
+
