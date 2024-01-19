@@ -1,6 +1,17 @@
-FROM nginx:1.25.3
-COPY nginx.conf /usr/share/nginx/html
+FROM node:6-alpine
 
-# EXPOSE 80
+Expose 3000
 
-# CMD [ "nginx", "-g", "daemon off;" ]
+RUN apk add --update tini
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+COPY package.json package.json
+
+RUN npm install && npm cache clean
+
+COPY . .
+
+CMD [ 'tini', "--", "node", "./bin/www" ]
