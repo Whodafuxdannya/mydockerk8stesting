@@ -16,7 +16,7 @@ services:
       environment:
         - POSTGRES_PASSWORD=value
   
-    volumes:
+  volumes:
       drupal-modules:
       drupal-profiles:
       drupal-sites:
